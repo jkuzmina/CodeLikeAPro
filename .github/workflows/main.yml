@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master, main ]
   pull_request:
-    branches: [ master, main, mvvm ]
+    branches: [ master, main ]
 
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
       - name: Build
         run: |
           chmod +x ./gradlew
-          ./gradlew build
+          ./gradlew build --stacktrace
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v2
