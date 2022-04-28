@@ -3,7 +3,7 @@ package ru.netology.nmedia
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModel
+import ru.netology.nmedia.adapter.PostsAdapter
 import ru.netology.nmedia.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -13,24 +13,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val viewModel: PostViewModel by viewModels()
-        viewModel.data.observe(this) { post ->
-            with(binding) {
-                title.text = post.author
-                published.text = post.published
-                content.text = post.content
-                likesCount.text = post.getCountStr(post.likesCount)
-                sharesCount.text = post.getCountStr(post.sharesCount)
-                likes.setImageResource(
-                    if(post.likedByMe) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_favorite_border_24
-                )
-            }
+        val adapter = PostsAdapter (
+            {viewModel.likeById(it.id)},
+            {viewModel.shareById(it.id)}
+        )
+        binding.list.adapter = adapter
+        viewModel.data.observe(this) { posts ->
+            adapter.submitList(posts)
         }
-        binding.likes.setOnClickListener {
-            viewModel.like()
-        }
-        binding.shares.setOnClickListener {
-            viewModel.share()
-        }
-
     }
+
+
 }
