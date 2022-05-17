@@ -11,38 +11,78 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/contentTopBarrier"
+        app:layout_constraintBottom_toTopOf="@id/editTopBarrier"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/card_post" />
 
-    <EditText
-        android:id="@+id/content"
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/editTopBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="editPostText, cancelEdit" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/editPostText"
+        style="@style/Widget.AppTheme.IconButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="@dimen/text_padding"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/save"
+        android:text="@string/edit_post"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        app:icon="@drawable/ic_edit_24"
+        app:layout_constraintEnd_toStartOf="@id/cancelEdit"
         app:layout_constraintStart_toStartOf="parent"
-        android:inputType="textMultiLine"
-        android:hint="@string/post_text"
-        android:importantForAutofill="no"
-        />
+        app:layout_constraintBottom_toTopOf="@id/contentTopBarrier"
+        tools:layout_editor_absoluteX="137dp"
+        tools:layout_editor_absoluteY="793dp" />
 
     <ImageButton
-        android:id="@+id/save"
+        android:id="@+id/cancelEdit"
         android:layout_width="@dimen/icon_button_min_size"
         android:layout_height="@dimen/icon_button_min_size"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/contentTopBarrier"
-        app:srcCompat="@drawable/ic_save_48"
         android:background="@android:color/transparent"
-        />
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="@id/editTopBarrier"
+        app:layout_constraintBottom_toTopOf="@id/contentTopBarrier"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_cancel_48" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/editGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="cancelEdit, editPostText" />
+
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/contentTopBarrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="top"
-        app:constraint_referenced_ids="content,save" />
+        app:constraint_referenced_ids="content, save" />
+
+    <EditText
+        android:id="@+id/content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/post_text"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine"
+        android:padding="@dimen/text_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/save"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/save"
+        android:layout_width="@dimen/icon_button_min_size"
+        android:layout_height="@dimen/icon_button_min_size"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/contentTopBarrier"
+        app:srcCompat="@drawable/ic_save_48" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
