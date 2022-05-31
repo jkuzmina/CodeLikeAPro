@@ -7,7 +7,8 @@ data class Post(
     val published:String,
     var likedByMe:Boolean,
     var likesCount:Int,
-    var sharesCount:Int
+    var sharesCount:Int,
+    val video:String = ""
 )
 {
     fun getCountStr(count:Int):String{

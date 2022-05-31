@@ -10,4 +10,7 @@
     <string name="post_text">Текст поста</string>
     <string name="error_empty_content">Текст поста не может быть пустым</string>
     <string name="edit_post">Редактировать пост</string>
+    <string name="add_post">Новый пост</string>
+    <string name="save">Сохранить</string>
+    <string name="play">Воспроизвести видео</string>
 </resources>

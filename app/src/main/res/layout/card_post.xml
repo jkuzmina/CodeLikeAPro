@@ -84,10 +84,11 @@
         tools:layout_editor_absoluteX="16dp" />
 
     <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/postBottomBarrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="content"
+        app:constraint_referenced_ids="video, play"
         tools:layout_editor_absoluteX="87dp"
         tools:layout_editor_absoluteY="247dp" />
 
@@ -101,7 +102,7 @@
         android:contentDescription="@string/like"
         app:icon="@drawable/ic_baseline_favorite_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/content"
+        app:layout_constraintTop_toBottomOf="@id/postBottomBarrier"
         tools:text="100" />
 
     <com.google.android.material.button.MaterialButton
@@ -114,7 +115,7 @@
         android:contentDescription="@string/share"
         app:icon="@drawable/ic_baseline_share_24"
         app:layout_constraintStart_toEndOf="@id/likes"
-        app:layout_constraintTop_toBottomOf="@id/content"
+        app:layout_constraintTop_toBottomOf="@id/postBottomBarrier"
         tools:text="1000" />
 
 
@@ -125,7 +126,7 @@
         android:layout_marginTop="@dimen/common_spacing"
         android:layout_marginEnd="@dimen/small_spacing"
         app:layout_constraintEnd_toStartOf="@+id/viewsCount"
-        app:layout_constraintTop_toBottomOf="@+id/content"
+        app:layout_constraintTop_toBottomOf="@+id/postBottomBarrier"
         app:srcCompat="@drawable/ic_baseline_visibility_24" />
 
     <TextView
@@ -138,6 +139,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/views" />
 
+    <ImageView
+        android:id="@+id/video"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/content"
+        android:layout_marginStart="@dimen/common_spacing"
+        android:layout_marginEnd="@dimen/common_spacing"
+        tools:layout_editor_absoluteX="21dp"
+        tools:layout_editor_absoluteY="281dp"
+        app:srcCompat="@drawable/ic_baseline_video_128" />
 
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_spacing"
+        app:layout_constraintStart_toStartOf="@id/video"
+        app:layout_constraintEnd_toEndOf="@id/video"
+        app:layout_constraintTop_toTopOf="@id/video"
+        app:layout_constraintBottom_toBottomOf="@id/video"
+        android:alpha="0.5"
+        app:srcCompat="@drawable/ic_baseline_play_arrow_24"
+        android:contentDescription="@string/play"/>
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/videoGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="video,play" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
