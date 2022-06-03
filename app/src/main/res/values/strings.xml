@@ -15,4 +15,7 @@
     <string name="post_text">Post text</string>
     <string name="error_empty_content">Content can\'t be empty</string>
     <string name="edit_post">Edit post</string>
+    <string name="add_post">Add post</string>
+    <string name="save">Save</string>
+    <string name="play">Play</string>
 </resources>
