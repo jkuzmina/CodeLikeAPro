@@ -45,9 +45,7 @@ class PostViewHolder(
             likes.isChecked = post.likedByMe
             likes.text = post.getCountStr(post.likesCount)
             shares.text = post.getCountStr(post.sharesCount)
-            if(post.video == "") {
-                videoGroup.visibility = View.GONE
-            }
+            if(post.video == "") videoGroup.visibility = View.GONE else videoGroup.visibility = View.VISIBLE
             menu.setOnClickListener {
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.options_post)
