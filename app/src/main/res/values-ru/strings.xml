@@ -13,4 +13,5 @@
     <string name="add_post">Новый пост</string>
     <string name="save">Сохранить</string>
     <string name="play">Воспроизвести видео</string>
+    <string name="chooser_share_post">Поделиться</string>
 </resources>
