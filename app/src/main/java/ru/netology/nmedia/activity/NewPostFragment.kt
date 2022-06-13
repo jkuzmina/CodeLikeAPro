@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -33,9 +34,15 @@ class NewPostFragment: Fragment() {
             false
         )
         //binding.edit.setText(activity?.intent?.getStringExtra(Intent.EXTRA_TEXT))
-        arguments?.textArg
-            ?.let(binding.edit::setText)
-
+        //arguments?.textArg
+            //?.let(binding.edit::setText)
+        if(arguments != null)
+        {
+            arguments?.textArg
+                ?.let(binding.edit::setText)
+        }else {
+            if (viewModel.getDraft() != null) binding.edit.setText(viewModel.getDraft()?.content)
+        }
         binding.edit.requestFocus()
         binding.ok.setOnClickListener {
             /*val intent = Intent()
@@ -51,6 +58,20 @@ class NewPostFragment: Fragment() {
             AndroidUtils.hideKeyboard(requireView())
             findNavController().navigateUp()
         }
+
+        val callback: OnBackPressedCallback = object : OnBackPressedCallback(
+            true // default to enabled
+        ) {
+            override fun handleOnBackPressed() {
+                viewModel.saveDraft(binding.edit.text.toString())
+                AndroidUtils.hideKeyboard(requireView())
+                findNavController().navigateUp()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            callback
+            )
         return binding.root
     }
 }
