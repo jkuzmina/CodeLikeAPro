@@ -77,13 +77,6 @@ class PostFragment : Fragment() {
 
                 }
 
-                override fun onOpen(post: Post) {
-                    findNavController().navigate(
-                        R.id.action_feedFragment_to_postFragment,
-                        Bundle().apply {
-                            longArg = post.id
-                        })
-                }
             }
         )
         val postId = arguments?.longArg ?: -1

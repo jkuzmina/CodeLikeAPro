@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import ru.netology.nmedia.R
 import ru.netology.nmedia.activity.NewPostFragment.Companion.textArg
+val DB_VERSION = 2
 
 class AppActivity : AppCompatActivity(R.layout.activity_app) {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
